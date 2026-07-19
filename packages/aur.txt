@@ -1,0 +1,2 @@
+# AUR packages, one per line. Comments and blank lines ignored.
+# Regenerate with:  pacman -Qqem > packages/aur.txt

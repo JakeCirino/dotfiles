@@ -1,0 +1,2 @@
+# Flatpak app IDs, one per line. Comments and blank lines ignored.
+# Regenerate with:  flatpak list --app --columns=application > packages/flatpak.txt

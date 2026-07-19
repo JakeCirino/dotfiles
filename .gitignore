@@ -1,0 +1,12 @@
+# Secrets / local-only
+*.local
+*.secret
+.env
+
+# Editor / OS cruft
+*.swp
+*~
+.DS_Store
+
+# Stow conflict backups
+*.stow-backup
