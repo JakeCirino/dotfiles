@@ -1,2 +1,22 @@
 # AUR packages, one per line. Comments and blank lines ignored.
 # Regenerate with:  pacman -Qqem > packages/aur.txt
+
+# browsers / media
+google-chrome
+spotify
+
+# editors / dev tools
+visual-studio-code-bin
+neovim-git
+dbeaver-ce-bin
+claude-code
+kiro-cli
+carapace
+
+# fonts
+ttf-google-fonts-git
+ttf-ms-win11-auto
+
+# system / misc
+systemd-numlockontty
+neofetch
