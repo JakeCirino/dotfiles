@@ -10,3 +10,9 @@
 
 # Stow conflict backups
 *.stow-backup
+
+# Nushell runtime state (never track)
+config/nushell/history.sqlite3*
+
+# Generated locally (contains personal git identity) — recreated by setup/git.nu
+config/nushell/autoload/99-GENERATED-*.nu

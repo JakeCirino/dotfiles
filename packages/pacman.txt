@@ -6,3 +6,19 @@ zsh
 git
 stow
 curl
+
+# terminal
+kitty
+nushell
+yazi                  # file manager (kitty kitty_mod+y)
+superfile             # file manager 'spf' (kitty kitty_mod+f)
+
+# nushell environment (sourced by config/nushell/autoload/*)
+starship              # prompt
+zoxide                # smart cd
+broot                 # directory tree nav
+fzf                   # fuzzy finder
+
+# fonts
+ttf-jetbrains-mono
+ttf-jetbrains-mono-nerd
