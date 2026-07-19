@@ -1,0 +1,23 @@
+[Keyboard]
+NumLock=0
+RepeatDelay=200
+RepeatRate=35
+
+[Libinput][1133][16553][Logitech PRO X 2]
+PointerAccelerationProfile=1
+
+[Libinput][1133][49300][Logitech PRO X Wireless]
+PointerAcceleration=0.000
+PointerAccelerationProfile=1
+
+[Libinput][1133][50503][Logitech USB Receiver]
+PointerAcceleration=0.000
+PointerAccelerationProfile=1
+
+[Libinput][6645][13058][NuPhy NuPhy Halo96 V2 Mouse]
+PointerAcceleration=0.000
+PointerAccelerationProfile=1
+
+[Mouse]
+X11LibInputXAccelProfileFlat=true
+XLbInptScrollOnButtonDown=true
