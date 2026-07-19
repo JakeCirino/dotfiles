@@ -23,7 +23,8 @@ so a fresh machine can be brought up to a known state.
 ## Fresh install
 
 ```bash
-sudo pacman -S --needed git stow
+# EndeavourOS ships git + yay. Only stow is needed to bootstrap:
+yay -S --needed stow
 git clone <this-repo-url> ~/code/dotfiles
 cd ~/code/dotfiles
 ./install.sh

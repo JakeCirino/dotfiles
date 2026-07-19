@@ -1,29 +1,22 @@
 #!/usr/bin/env bash
-# Install packages from packages/*.txt
+# Install packages from packages/*.txt using yay (which wraps pacman, so it
+# handles both official-repo and AUR packages). No direct pacman calls.
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
-# --- native (pacman) ---------------------------------------------------------
-mapfile -t pac < <(read_list "$REPO_ROOT/packages/pacman.txt")
-if ((${#pac[@]})); then
-  info "Installing ${#pac[@]} native package(s) via pacman (full sync/upgrade)"
-  sudo pacman -Syu --needed --noconfirm "${pac[@]}"
-else
-  warn "packages/pacman.txt is empty, skipping"
-fi
+# yay is required for the whole package step. EndeavourOS ships it by default.
+require_cmd yay
 
-# --- AUR ---------------------------------------------------------------------
-mapfile -t aur < <(read_list "$REPO_ROOT/packages/aur.txt")
-if ((${#aur[@]})); then
-  helper=""
-  for h in yay paru; do command -v "$h" >/dev/null 2>&1 && { helper="$h"; break; }; done
-  if [[ -z "$helper" ]]; then
-    warn "no AUR helper (yay/paru) found, skipping ${#aur[@]} AUR package(s)"
-  else
-    info "Installing ${#aur[@]} AUR package(s) via $helper (full sync/upgrade)"
-    "$helper" -Syu --needed --noconfirm "${aur[@]}"
-  fi
+# Combine repo + AUR lists into a single yay invocation. yay resolves each
+# package from the correct source automatically.
+mapfile -t pkgs < <(cat \
+  <(read_list "$REPO_ROOT/packages/pacman.txt") \
+  <(read_list "$REPO_ROOT/packages/aur.txt"))
+
+if ((${#pkgs[@]})); then
+  info "Installing ${#pkgs[@]} package(s) via yay (full sync/upgrade)"
+  yay -Syu --needed --noconfirm "${pkgs[@]}"
 else
-  warn "packages/aur.txt is empty, skipping"
+  warn "no packages listed in packages/pacman.txt or packages/aur.txt, skipping"
 fi
 
 # --- flatpak -----------------------------------------------------------------

@@ -19,7 +19,9 @@ err()   { printf '%serr%s %s\n'  "$_c_red"    "$_c_reset" "$*" >&2; }
 read_list() {
   local file="$1"
   [[ -f "$file" ]] || return 0
-  sed -e 's/#.*//' -e '/^[[:space:]]*$/d' "$file"
+  # strip comments (whole-line and inline), trim leading/trailing whitespace,
+  # then drop blank lines.
+  sed -e 's/#.*//' -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e '/^$/d' "$file"
 }
 
 # Ensure a command exists, or exit with a helpful message.
